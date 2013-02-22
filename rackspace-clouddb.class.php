@@ -319,8 +319,37 @@
 			return json_decode($response);
 		}
 	
-	
-	
+	# -----------------------------------------------------------------------------------
+	#	enableDatabaseRootUser()
+	# -----------------------------------------------------------------------------------
+
+		public function enableDatabaseRootUser($instanceID) {
+
+			$response = $this->basicCURL(
+				$this->api->endpoints->clouddb.'/instances/'.$instanceID.'/root',
+				array('X-Auth-Token: '.$this->authToken,'Content-Type: application/json','Accept: application/json'),
+				null,
+				array(
+					CURLOPT_POST => 1,
+				)
+			);
+
+			return json_decode($response);
+		}
+
+	# -----------------------------------------------------------------------------------
+	#	listRootEnalbedStatus()
+	# -----------------------------------------------------------------------------------
+
+		public function listRootEnalbedStatus($instanceID) {
+
+			$response = $this->basicCURL(
+				$this->api->endpoints->clouddb.'/instances/'.$instanceID.'/root',
+				array('X-Auth-Token: '.$this->authToken,'Content-Type: application/json','Accept: application/json')
+			);
+
+			return json_decode($response);
+		}
 	
 	}
 	
